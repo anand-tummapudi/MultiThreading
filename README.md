@@ -1,12 +1,7 @@
-
 # Ways to Create Threads in Java (Java 17 & Java 21)
-
 This README provides **7 different ways** to create and run threads in Java, including modern approaches like **CompletableFuture**, **ExecutorService**, **Fork/Join Framework**, and **Virtual Threads** (Java 21).
-
 ---
-
 ## 1. Creating a Thread by Extending `Thread` Class
-
 ```java
 public class MyThread extends Thread {
     @Override
@@ -20,9 +15,7 @@ public class MyThread extends Thread {
     }
 }
 ```
-
 ---
-
 ## 2. Creating a Thread by Implementing `Runnable`
 
 ```java
@@ -38,11 +31,8 @@ public class MyRunnable implements Runnable {
     }
 }
 ```
-
 ---
-
 ## 3. Creating a Thread using Lambda Expression
-
 ```java
 public class LambdaThread {
     public static void main(String[] args) {
@@ -53,14 +43,10 @@ public class LambdaThread {
     }
 }
 ```
-
 ---
-
 ## 4. Creating a Thread using `CompletableFuture`
-
 ```java
 import java.util.concurrent.CompletableFuture;
-
 public class CompletableFutureExample {
     public static void main(String[] args) {
         CompletableFuture.runAsync(() -> {
@@ -69,9 +55,7 @@ public class CompletableFutureExample {
     }
 }
 ```
-
 ---
-
 ## 5. Creating Threads using `ExecutorService`
 
 ```java
@@ -87,9 +71,7 @@ public class ExecutorServiceExample {
     }
 }
 ```
-
 ---
-
 ## 6. Creating Threads using Fork/Join Framework
 
 ```java
@@ -109,11 +91,8 @@ public class MyForkJoinTask extends RecursiveAction {
     }
 }
 ```
-
 ---
-
 ## 7. Creating Virtual Threads (Java 21+)
-
 ```java
 public class VirtualThreadExample {
     public static void main(String[] args) throws Exception {
@@ -125,10 +104,8 @@ public class VirtualThreadExample {
     }
 }
 ```
-
 ---
-
-## Summary Table
+## Different Ways for Creating thread Summary
 
 | # | Method | Java Version | Notes |
 |---|--------|--------------|--------|
