@@ -150,6 +150,12 @@ public class VirtualThreadExample {
  **Blocked** - Every thread is in this state, when it is waiting for some thread to finish.
  **Terminated** - Every thread is in this state after it is done doing its assigned work.
  
+ ## Join Operation
+  Main therad is the parent Thread  
+  join() method on a certain thread means, once you are done executing your task, join my flow of execution. It is like the parent thread waits for the completion of the child thread and then continues with its execution.
+  
+  
+ 
  
 
 
