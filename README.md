@@ -145,10 +145,10 @@ public class VirtualThreadExample {
  **Parallelism** - Tasks are executed simultaniously  - Is about toexecuting multiple tasks in parallel.
  
  ## Thread Life Cycle
- ** New State** - Every thread is in this state until we start it.
- ** Active** - Every thread is in this state after we can start() on it.
- ** Blocked** - Every thread is in this state, when it is waiting for some thread to finish.
- ** Terminated** - Every thread is in this state after it is done doing its assigned work.
+ **New State** - Every thread is in this state until we start it.
+ **Active** - Every thread is in this state after we can start() on it.
+ **Blocked** - Every thread is in this state, when it is waiting for some thread to finish.
+ **Terminated** - Every thread is in this state after it is done doing its assigned work.
  
  
 
