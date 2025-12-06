@@ -7,7 +7,7 @@ public class MyFirstThread extends Thread{
             for(int i=0;i<10;i++){
                 System.out.println("MyFirstThread: "+i);
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
