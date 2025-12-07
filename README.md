@@ -155,6 +155,12 @@ Wait() is used for synchronization and stop() is used for just sleeping. When wa
 **Wait** method is with different variants one with wit and wait(time), when we call wait with time thread will be suspended until the time and it automatically awakes after the time.  
 **Notify** Notify will notify one waiting theread and NirifyAll will notify all the waiting threads.  
 
+## ReentrantLock
+ReentrantLock is a mutual exclusion lock implementation in java.util.concurrent.locks. 
+It provides the same basic mutual-exclusion behavior as the synchronized keyword (only one thread holds the lock at a time), but with more features and explicit control.
+"Reentrant" means the thread that currently holds the lock can acquire it again without deadlocking itself. The lock maintains a hold count: each lock() increments it, each unlock() decrements it; the lock is released only when the hold count reaches zero.  
+TryLock helps avoid deadlocks or implement non-blocking attempts to enter critical sections.
+
 ## Producer and Consumer Problem
 
    
