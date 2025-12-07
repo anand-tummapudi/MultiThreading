@@ -162,6 +162,64 @@ It provides the same basic mutual-exclusion behavior as the synchronized keyword
 TryLock helps avoid deadlocks or implement non-blocking attempts to enter critical sections.
 
 ## Producer and Consumer Problem
+ Producer consumer problem can be implemented using wait and notify methods. It can also be implemented using Reentrant Lock. Just the way of synchronizing and accessing the shared components.
+
+## Executor Services
+Let us say if we want to create huge number of threads to perform a task. A thread is an expensive task, so if we create 1000s of threads  it would be difficult to manage and it consumes cpu. So we can create a pool of threads and reuse the threads, that will optimize the performance. Executors helps for the same. Here threads are not killed once they are done with the performing the task. Threads will be reused to perform another task. So that we can save the time of creating threads also.  
+
+There are 4 types of executors.  
+
+SingleThreadExecutor  
+FixedThreadPoolExecutor  
+CachedThreadPool  
+ScheduledExecutor  
+
+Executors have 2 components thread pool and priority queue. There will be a pool of readily avaiulable threads created. Each time a task is assiged to a thread that will be added to a blocking queue. Then the tasks will be executed based on their priority and availability of threads.  
+Fixed thread pool, have a fixed no of threads to be pooled and execute tasks. CacheThreadPool, does not have a size of the pool but it maintains a synchronous queue. If there are 10 threads created and all are busy executing tasks, it automatically creates a new thread to execute the task. If a thread is completing its task and being idle in the pool for maximum of 60 secods, then it kills or terminates the thread. So it is like self managed pool of threads execution.  
+Scheduled executors services are created to run the tasks at scheuled time intervals, it can be scheduled with intial time delay and delay between each iteration and the time units can be passed to the executor service.  
+
+```java
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+public class ScheduledExecutorDemo {
+
+    public static void main(String[] args) {
+
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+        service.scheduleAtFixedRate(new ProbeTask(),0,1, TimeUnit.SECONDS);
+
+        try {
+            if (!service.awaitTermination(30, TimeUnit.SECONDS)) {
+                service.shutdown();
+            }
+        } catch (InterruptedException e) {
+            service.shutdown();
+            e.printStackTrace();
+        }
+    }
+}
+
+class ProbeTask implements Runnable{
+     @Override
+    public void run(){
+        System.out.println("Probe Task executed by Thread: " + Thread.currentThread().getName());
+    }
+
+}
+
+
+```
+
+There are 2 shutdown methods, shutdown() and shutdownNow(). First one waits for the currently executing thereads to be completed and terminate. Second one terminates immediately without waiting for the currently executing threads to be terminated.
+
+
+
+
+
+
 
    
 
