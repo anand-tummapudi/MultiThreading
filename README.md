@@ -131,6 +131,41 @@ public class VirtualThreadExample {
   Main therad is the parent Thread  
   join() method on a certain thread means, once you are done executing your task, join my flow of execution. It is like the parent thread waits for the completion of the child thread and then continues with its execution.
   
+ ## Deamon Threads and User Threads
+Deamon threads run in the background and they are helper threads.  
+Any thread is not deamon by default. We can make a thread deamon by calling **thread.setDeamon(true)** method on the thread.  
+JVM does not wait for the deamon threads to completes its execution, onces user thread execution is completed the JVM terminates even though the deamon thread is still running.  
+
+## Thread Priority
+Lets say there are 10 threads in runnable state and there is only one CPU. So only one thread can run at a time and others have to wait. So who decides which thread can get to run on the cpu, this component is called Thread Scheduler.  
+Each thread has cerain priority and under normal circumstances, the thread with the highest priority gets to run on the CPU.  
+Priority value 1 - 10 can be assigned to any thread. 1 is the MIN_PRIORITY and 10 is the MAX_PRIORITY. By default the priority of a thread is 5 which is NORM_PRIORITY.  
+Threads of the same priority are executed in FIFO manner. The thread scheduler stores the threads in a queue.  
+Main thread gets executed first irrespective of the priority whether it is lower or higher.  
+
+## Thread Synchronization
+Shared Resources, we want to make use of among the multiple threads. So at a given point of time only one thread can make use of the resource. We can achieve this byusing synchronization.  
+Synchronization can be done at method level or block level. Code inside the synchorization block is called critical section.  
+
+**Problem with Synchronization** Each object in java is associated with a monitor. That is mutual exclusion mechanism used in synchronization. When a thread is encountered synchrinization, the monitor lock is assigned to the thread. So when we apply Synchronized at method level, the entire method is locked with the monitor. This leads to reduced concurrency and performance losing.  
+When we apply synchronize keyword at block level, we need to pass something to the synchronize method, so we need to create the lock objects explicitly and pass. So JVM will not lock entire class. 
+
+## Wait and Notify
+Wait() is used for synchronization and stop() is used for just sleeping. When wait() ic called, execution of the thread will be suspended.  
+**Wait** method is with different variants one with wit and wait(time), when we call wait with time thread will be suspended until the time and it automatically awakes after the time.  
+**Notify** Notify will notify one waiting theread and NirifyAll will notify all the waiting threads.  
+
+## Producer and Consumer Problem
+
+   
+
+
+
+
+
+
+ 
+  
   
  
  

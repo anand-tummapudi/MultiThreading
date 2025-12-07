@@ -6,7 +6,7 @@ public class JoinExample {
 
         // Create Thread with lambda
         System.out.println("Starting Threads");
-        
+
         Thread t1 = new Thread(()->{
             for(int i=1;i<=5;i++){
                 System.out.println("Thread 1 - Count: " + i);
