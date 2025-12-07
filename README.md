@@ -215,6 +215,45 @@ class ProbeTask implements Runnable{
 
 There are 2 shutdown methods, shutdown() and shutdownNow(). First one waits for the currently executing thereads to be completed and terminate. Second one terminates immediately without waiting for the currently executing threads to be terminated.
 
+**Callable and Future**
+Callable is another interface provided by theads, which allows to return values from a thread. like run method in runnable, we have a call() method in callable interface.  
+Executor service provides 2 ways to execute a thread, one is execute and other one is submit. So for callable we should use submit insted of execute.  
+In case of callable the executor service returns a Future class using which we can get the values from the calable thread by using get method.  
+```java
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class CallableExample {
+
+    public static void main(String[] args) {
+        ExecutorService service = Executors.newFixedThreadPool(2);
+        ;
+        Future<Integer> result = service.submit(new ReturnValueTask());
+        try {
+            System.out.println(result.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+  class ReturnValueTask implements Callable<Integer> {
+
+    public Integer call() throws Exception {
+        System.out.println("ReturnValueTask Started by "+Thread.currentThread().getName());
+        return 12;
+    }
+
+ }
+```
+future.get() is a blocking method, lets say there is a delay in getting the value from the future, until it gets the value it blocks the execution and waits until it gets the value. So we have to keep it in mind that the execution resumes only after getting the value from the future.  
+some utility methods in future result class.  
+result.cancel()  
+result.isCancelled()  
+result.isDone()  
+result.get(6,TimeUnits.SECONDS) - get method with timeout. System waits for 6 seconds or the given amount of time for the future to return the result and terminates.  
 
 
 
